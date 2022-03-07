@@ -3,17 +3,18 @@
     <div class="main__container">
       <div class="main__page page">
 
-          <div class="page__header _container"><h1>Lorem ipsum dolor sit</h1></div>
+          <header class="page__header _container"><h1>Lorem ipsum dolor sit</h1></header>
 
           <div class="page__filters filters _container _filters">
 <!-- ********************************** -->
             <div class="filters__column">
               <div class="filter__title"><h3>КОМНАТЫ</h3></div>
               <div class="filter__items">
-                <div class="filter__checkbox">S</div>
+                <div class="filter__checkbox">XS</div>
                 <div class="filter__checkbox _green">1k</div>
                 <div class="filter__checkbox">2k</div>
                 <div class="filter__checkbox">3k</div>
+                <div class="filter__checkbox">4k</div>
               </div>
             </div>
             <div class="vertborder">
@@ -27,8 +28,8 @@
                 <div class="filter__input">99</div>
               </div>
               <div class="filter__range-slider">
+                <!-- v-model="range" -->
               <v-range-slider
-                v-model="range"
                 max="100"
                 min="0"
                 hide-details
@@ -67,7 +68,7 @@
             </div>
 <!-- ********************************** -->
             <div class="filters__column">
-              <div class="filter__title"><h3>ПЛОЩАДЬ, м2</h3></div>
+              <div class="filter__title"><h3>ПЛОЩАДЬ, м<sup>2</sup></h3></div>
               <div class="filter__items">
                 <div class="filter__input">1</div>
                 <div class="filter__u">-</div>
@@ -99,235 +100,31 @@
           </div>
 
           <div class="page__flats _container flat">
-            <div class="flat__card">
+            <div class="flat__card" v-for="(item, idx) in data" :key="idx">
               <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
+                <div class="top__left">{{item.floor}} этаж</div>
+                <div class="top__right">
+                  {{item.rooms}} комнатная
+                  <span>-</span>
+                  {{item.square}}м<sup>2</sup>
+                </div>
               </div>
               <div class="flat__content  flat-content">
                 <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
+                  <div class="flat-content__flat-number">№{{item.number}}</div>
                 </div>
                 <div class="flat-content__image">
                   <img src="../assets/img/image 3.jpg" alt="план квартиры">
                 </div>
               </div>
               <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
+                <div class="footer-flat__cost">{{item.price}}р.</div>
+                <div class="footer-flat__square">
+                  {{Math.round(item.price / item.square)}}р. за м<sup>2</sup>
+                </div>
               </div>
               <div class="flat__button">Подробнее</div>
             </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
-            <div class="flat__card">
-              <div class="flat__top top _card-container">
-                <div class="top__left">3 этаж</div>
-                <div class="top__right">1 комната<span>-</span>22.94м</div>
-              </div>
-              <div class="flat__content  flat-content">
-                <div class="flat-content__top">
-                  <div class="flat-content__flat-number">№256</div>
-                </div>
-                <div class="flat-content__image">
-                  <img src="../assets/img/image 3.jpg" alt="план квартиры">
-                </div>
-              </div>
-              <div class="flat__footer footer-flat">
-                <div class="footer-flat__cost">2 729 860р.</div>
-                <div class="footer-flat__square">119 000 р. за м</div>
-              </div>
-            </div>
-            <!--  -->
           </div>
 
         </div>
@@ -339,6 +136,15 @@
 <script>
 export default {
   name: 'Home',
+  data() {
+    return {
+      data: [],
+    };
+  },
+  mounted() {
+    this.data = this.$store.getters.getData;
+    console.log('this.data', this.data);
+  },
   components: {},
 };
 </script>

@@ -65,7 +65,11 @@ color: #2C323A;
 
 }
 .filter__checkbox {
-  padding: 6px 18px;
+  width: 48px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #FFFFFF;
   border: 1px solid #D8D8D8;
   box-sizing: border-box;
@@ -98,7 +102,7 @@ color: #2C323A;
   box-sizing: border-box;
   border-radius: 5px;
   min-width: 80px;
-  min-height: 40px;
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -135,7 +139,6 @@ color: #2C323A;
   text-transform: uppercase;
   color: #FFFFFF;
   transition: all 0.3s ease-in;
-
 }
 .filter__button:hover {
   cursor: pointer;
@@ -151,7 +154,6 @@ color: #2C323A;
 .filter_cancel__items:hover .filter__hr{
   background: red;
 }
-
 .filter__cancel {
   font-weight: bold;
   font-size: 10px;
@@ -159,25 +161,26 @@ color: #2C323A;
   text-transform: uppercase;
   color: #2C323A;
 }
-
 .filter__hr {
   background: #70D24E;
   margin: 0;
   padding: 0;
 }
-
 .page__flats {
   padding: 20px 0;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 /* ********************************* */
 .flat__card {
+  max-width: 274px;
   height: 365px;
   background: #FFFFFF;
   box-shadow: 0px 5px 20px rgba(86, 86, 86, 0.05);
   border-radius: 10px;
   margin: 15px 15px;
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
   transition: all 0.7s;
@@ -225,7 +228,6 @@ color: #2C323A;
 .flat-content__top {
   display: flex;
   justify-content: flex-end;
-
 }
 .flat-content__flat-number {
   width: 62px;
@@ -264,7 +266,6 @@ color: #2C323A;
   line-height: 233%;
   color: #2C323A;
   opacity: 0.5;
-
 }
 .flat__button {
   display: flex;
@@ -282,6 +283,10 @@ color: #2C323A;
   color: #FFFFFF;
   transition: all 0.5s ease-in;
 }
+.flat__button:hover {
+  cursor: pointer;
+}
+
 @media (max-width: 1422px) {
   .flat__card {
     margin: 15px 10px;
@@ -293,14 +298,14 @@ color: #2C323A;
     flex: 1 1 25%;
     margin: 15px 15px;
   }
-}
-@media (max-width: 1296px) {
   .vertborder {
     display: none;
   }
   .main {
     padding: 60px;
   }
+}
+@media (max-width: 1296px) {
   .filter__input {
     min-width: 60px;
   }
