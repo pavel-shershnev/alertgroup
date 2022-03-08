@@ -122,7 +122,7 @@
             </div>
           </div>
 
-          <div class="page__flats _container flat">
+          <div class="page__flats _container flat" v-if="filteredData.length !==0">
             <div class="flat__card" v-for="(item, idx) in filteredData" :key="idx">
               <div class="flat__top top _card-container">
                 <div class="top__left">{{item.floor}} этаж</div>
@@ -149,6 +149,9 @@
               <div class="flat__button">Подробнее</div>
             </div>
           </div>
+          <div class="page__flats _container flat page__header" v-else>
+            <h3>Нет квартир по данным фильтрам</h3>
+          </div>
         </div>
       </div>
     </div>
@@ -163,12 +166,12 @@ export default {
       data: [],
       filteredData: [],
 
-      flatSizeFilter: [],
-      isActiveXS: false,
-      isActive1k: false,
-      isActive2k: false,
-      isActive3k: false,
-      isActive4k: false,
+      flatSizeFilter: ['XS', '1k', '2k', '3k', '4'],
+      isActiveXS: true,
+      isActive1k: true,
+      isActive2k: true,
+      isActive3k: true,
+      isActive4k: true,
 
       floorsFilter: [1, 10],
       squareFilter: [1, 99],
@@ -179,16 +182,23 @@ export default {
   },
   methods: {
     applyFilters() {
-      this.filteredData = this.data.filter((flat) => this.flatSizeFilter.includes(flat.size));
+      this.filteredData = this.data
+        .filter((flat) => this.flatSizeFilter.includes(flat.size))
+        .filter((flat) => flat.floor >= this.floorsFilter[0]
+        && flat.floor <= this.floorsFilter[1])
+        .filter((flat) => flat.square >= this.squareFilter[0]
+        && flat.square <= this.squareFilter[1])
+        .filter((flat) => flat.price / 1000000 >= this.priceFilter[0]
+        && flat.price / 1000000 <= this.priceFilter[1]);
     },
     clearFilters() {
       this.filteredData = this.data;
-      this.flatSizeFilter = [];
-      this.isActiveXS = false;
-      this.isActive1k = false;
-      this.isActive2k = false;
-      this.isActive3k = false;
-      this.isActive4k = false;
+      this.flatSizeFilter = ['XS', '1k', '2k', '3k', '4'];
+      this.isActiveXS = true;
+      this.isActive1k = true;
+      this.isActive2k = true;
+      this.isActive3k = true;
+      this.isActive4k = true;
       this.floorsFilter = [1, 10];
       this.squareFilter = [1, 99];
       this.priceFilter = [1, 10];
