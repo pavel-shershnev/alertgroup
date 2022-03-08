@@ -6,7 +6,7 @@
           <header class="page__header _container"><h1>Lorem ipsum dolor sit</h1></header>
 
           <div class="page__filters filters _container _filters">
-<!-- ******filter flat size**************************** -->
+<!-- ******filter by flat size**************************** -->
             <div class="filters__column">
               <div class="filter__title"><h3>КОМНАТЫ</h3></div>
               <div class="filter__items">
@@ -39,71 +39,75 @@
             </div>
             <div class="vertborder">
             </div>
-<!-- ******filter**************************** -->
+<!-- ******filter by floor**************************** -->
             <div class="filters__column">
               <div class="filter__title"><h3>ЭТАЖ</h3></div>
               <div class="filter__items">
-                <div class="filter__input">1</div>
+                <div class="filter__input"><input type="text" v-model="floorsFilter[0]"></div>
                 <div class="filter__u">-</div>
-                <div class="filter__input">99</div>
+                <div class="filter__input"><input type="text" v-model="floorsFilter[1]"></div>
               </div>
               <div class="filter__range-slider">
-                <!-- v-model="range" -->
-              <v-range-slider
-                max="100"
-                min="0"
-                hide-details
-                class="align-center"
-                thumb-color="#70D24E"
-                track-color="#D8D8D8"
-                track-fill-color="#70D24E"
-
-              >
-            <!-- <template v-slot:prepend>
-              <v-text-field
-                :value="range[0]"
-                class="mt-0 pt-0"
-                hide-details
-                single-line
-                type="number"
-                style="width: 60px"
-                @change="$set(range, 0, $event)"
-              ></v-text-field>
-            </template> -->
-            <!-- <template v-slot:append>
-              <v-text-field
-                :value="range[1]"
-                class="mt-0 pt-0"
-                hide-details
-                single-line
-                type="number"
-                style="width: 60px"
-                @change="$set(range, 1, $event)"
-              ></v-text-field>
-            </template> -->
-          </v-range-slider>
+                <v-range-slider
+                  v-model="floorsFilter"
+                  max="10"
+                  min="1"
+                  hide-details
+                  class="align-center"
+                  thumb-color="#70D24E"
+                  track-color="#D8D8D8"
+                  track-fill-color="#70D24E"
+                >
+                </v-range-slider>
               </div>
             </div>
             <div class="vertborder">
             </div>
-<!-- ******filter**************************** -->
+<!-- ******filter by square**************************** -->
             <div class="filters__column">
               <div class="filter__title"><h3>ПЛОЩАДЬ, м<sup>2</sup></h3></div>
               <div class="filter__items">
-                <div class="filter__input">1</div>
+                <div class="filter__input"><input type="text" v-model="squareFilter[0]"></div>
                 <div class="filter__u">-</div>
-                <div class="filter__input">99</div>
+                <div class="filter__input"><input type="text" v-model="squareFilter[1]"></div>
+              </div>
+              <div class="filter__range-slider">
+                <v-range-slider
+                  v-model="squareFilter"
+                  max="99"
+                  min="1"
+                  hide-details
+                  class="align-center"
+                  thumb-color="#70D24E"
+                  track-color="#D8D8D8"
+                  track-fill-color="#70D24E"
+                >
+                </v-range-slider>
               </div>
             </div>
             <div class="vertborder">
             </div>
-<!-- ******filter**************************** -->
+<!-- ******filter by price**************************** -->
             <div class="filters__column">
               <div class="filter__title"><h3>СТОИМОСТЬ, млн. р.</h3></div>
               <div class="filter__items">
-                <div class="filter__input">1</div>
+                <div class="filter__input"><input type="text" v-model="priceFilter[0]"></div>
                 <div class="filter__u">-</div>
-                <div class="filter__input">99</div>
+                <div class="filter__input"><input type="text" v-model="priceFilter[1]"></div>
+              </div>
+              <div class="filter__range-slider">
+                <v-range-slider
+                  v-model="priceFilter"
+                  max="10"
+                  min="1"
+                  step="0.01"
+                  hide-details
+                  class="align-center"
+                  thumb-color="#70D24E"
+                  track-color="#D8D8D8"
+                  track-fill-color="#70D24E"
+                >
+                </v-range-slider>
               </div>
             </div>
             <div class="vertborder">
@@ -157,13 +161,18 @@ export default {
   data() {
     return {
       data: [],
+      filteredData: [],
+
       flatSizeFilter: [],
       isActiveXS: false,
       isActive1k: false,
       isActive2k: false,
       isActive3k: false,
       isActive4k: false,
-      filteredData: [],
+
+      floorsFilter: [1, 10],
+      squareFilter: [1, 99],
+      priceFilter: [1, 10],
     };
   },
   computed: {
@@ -180,6 +189,9 @@ export default {
       this.isActive2k = false;
       this.isActive3k = false;
       this.isActive4k = false;
+      this.floorsFilter = [1, 10];
+      this.squareFilter = [1, 99];
+      this.priceFilter = [1, 10];
     },
   },
   mounted() {
