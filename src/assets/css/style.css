@@ -1,18 +1,19 @@
 .main__container::-webkit-scrollbar {
-  width: 12px;               /* ширина scrollbar */
+  width: 12px;
 }
 .main__container::-webkit-scrollbar-track {
-  background: orange;        /* цвет дорожки */
+  background: #f8f8f8f3;
 }
 .main__container::-webkit-scrollbar-thumb {
-  background-color: blue;    /* цвет плашки */
-  border-radius: 20px;       /* закругления плашки */
-  border: 3px solid orange;  /* padding вокруг плашки */
+  background-color: #2F2E2D;
+  border-radius: 30px;
+  border: 3px solid #f8f8f8b4;
 }
 ._container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+  overflow: hidden;
 }
 ._filters {
   padding: 0 5px;
@@ -31,12 +32,12 @@
   width: 100%;
   height: 100%;
   padding: 30px;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .main__page {
   background: #F8F8F8;
   border-radius: 10px;
-  height: 100%;
+  /* height: 100%; */
 
 }
 .page__header {
@@ -320,6 +321,7 @@ color: #2C323A;
   text-transform: uppercase;
   color: #FFFFFF;
   transition: all 0.5s ease-in;
+  margin: 0 -10px;
 }
 .flat__button:hover {
   cursor: pointer;
@@ -328,7 +330,6 @@ color: #2C323A;
 @media (max-width: 1422px) {
   .flat__card {
     margin: 15px 10px;
-
   }
 }
 @media (max-width: 1382px) {
@@ -344,25 +345,28 @@ color: #2C323A;
   }
 }
 @media (max-width: 1296px) {
-  .filter__input {
-    width: 60px;
+  .page__header h1{
+    font-size: 30px;
   }
-  .filter__checkbox {
-    padding: 6px 12px;
+  ._container {
+    max-width: 900px;
   }
 }
-@media (max-width: 1024px){
-  .page__header h1{
-    font-size: 24px;
+@media (max-width: 1083px) {
+  ._container {
+    max-width: 650px;
   }
   .filters {
     justify-content:space-around;
   }
-  /* .filters__column {
-    width: 201px;
-  } */
 }
 @media (max-width: 991px) {
+  .filter__input {
+    width: 60px;
+  }
+   .filter__checkbox {
+    padding: 6px 12px;
+  }
   .page__header h1{
     font-size: 20px;
   }
@@ -390,6 +394,9 @@ color: #2C323A;
   }
 }
 @media (max-width: 405px) {
+  ._container{
+    max-width: 350px;
+  }
   .filters__column {
     flex: 1 1 100%;
   }

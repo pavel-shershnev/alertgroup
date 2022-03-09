@@ -150,7 +150,7 @@
             </div>
           </div>
           <div class="page__flats _container flat page__header" v-else>
-            <h3>Нет квартир по данным фильтрам</h3>
+            <h3>Нет квартир по заданным фильтрам</h3>
           </div>
         </div>
       </div>
